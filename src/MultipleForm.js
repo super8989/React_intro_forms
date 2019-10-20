@@ -6,26 +6,16 @@ class MultipleForm extends Component {
 		this.state = { username: "", email: "", password: "" };
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleEmailChange = this.handleEmailChange.bind(this);
-		this.handlePasswordChange = this.handlePasswordChange.bind(this);
 	}
 
 	handleChange(evt) {
-		this.setState({ username: evt.target.value });
+		this.setState({ [evt.target.name]: evt.target.value });
 	}
 
 	handleSubmit(evt) {
 		evt.preventDefault();
 		alert(`You typed: ${this.state.username}`);
 		this.setState({ username: "" });
-	}
-
-	handleEmailChange(evt) {
-		this.setState({ email: evt.target.value });
-	}
-
-	handlePasswordChange(evt) {
-		this.setState({ password: evt.target.value });
 	}
 
 	render() {
@@ -35,20 +25,23 @@ class MultipleForm extends Component {
 					<h1>Multiple Form Demo</h1>
 					<input
 						type='text'
+						name='username'
 						value={this.state.username}
 						onChange={this.handleChange}
 					/>
 					<input
 						type='email'
+						name='email'
 						placeholder='email'
 						value={this.state.email}
-						onChange={this.handleEmailChange}
+						onChange={this.handleChange}
 					/>
 					<input
 						type='password'
+						name='password'
 						placeholder='password'
 						value={this.state.password}
-						onChange={this.handlePasswordChange}
+						onChange={this.handleChange}
 					/>
 					<button>Submit!</button>
 				</form>
