@@ -3,9 +3,11 @@ import React, { Component } from "react";
 class MultipleForm extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { username: "" };
+		this.state = { username: "", email: "", password: "" };
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleEmailChange = this.handleEmailChange.bind(this);
+		this.handlePasswordChange = this.handlePasswordChange.bind(this);
 	}
 
 	handleChange(evt) {
@@ -18,6 +20,14 @@ class MultipleForm extends Component {
 		this.setState({ username: "" });
 	}
 
+	handleEmailChange(evt) {
+		this.setState({ email: evt.target.value });
+	}
+
+	handlePasswordChange(evt) {
+		this.setState({ password: evt.target.value });
+	}
+
 	render() {
 		return (
 			<div>
@@ -27,6 +37,18 @@ class MultipleForm extends Component {
 						type='text'
 						value={this.state.username}
 						onChange={this.handleChange}
+					/>
+					<input
+						type='email'
+						placeholder='email'
+						value={this.state.email}
+						onChange={this.handleEmailChange}
+					/>
+					<input
+						type='password'
+						placeholder='password'
+						value={this.state.password}
+						onChange={this.handlePasswordChange}
 					/>
 					<button>Submit!</button>
 				</form>
